@@ -1,11 +1,4 @@
-// q1_18l1174.cpp : Defines the entry point for the console application.
-//
-
 #include"BankAccount.h"
-#include<iostream>
-#include "stdafx.h"
-#include <string>
-using namespace std;
 
 void bankAccount::setname(string n)//it will set the accounts name
 {
@@ -42,13 +35,15 @@ void bankAccount::setBalance(int b)//it will set the balance
 	balance=b;
 }
 bankAccount::bankAccount(string n, int i)//constructor
-{	setname(n);
-setid(i);
-cap=10;
-int * transactions=new int[cap];
-int currentTransaction=0;
-float balance=0;
-int balanceLimit=20000;
+{
+	setname(n);
+	setid(i);
+	//setBalance();
+	cap=10;
+	int * transactions=new int[cap];
+	int currentTransaction=0;
+	float balance=0;
+	int balanceLimit=20000;
 }
 void bankAccount::print()const//print the info about bank account
 {
@@ -66,8 +61,8 @@ void bankAccount::withdraw(int w)//withdraw amount from the account
 	if(w<balance&&w<balancelimit)
 	{
 		balance=balance-w;
-		transaction[currenttransaction]=-w;
-		currenttransaction++;
+		transactions[currentTransaction]=-w;
+		currentTransaction++;
 		cout<<"transaction successful"<<endl;
 	}
 	else 
@@ -75,20 +70,20 @@ void bankAccount::withdraw(int w)//withdraw amount from the account
 }
 void bankAccount::deposit(int d)//deposit amount  to the account
 {
-	if(d+balance<=balancelimit)
+	if((d+balance)<=balancelimit)
 	{
 		balance=balance+d;
-		transaction[currenttransaction]=d;
-		currenttransaction++;
+		transactions[currentTransaction]=d;
+		currentTransaction++;
 		cout<<"transaction successful"<<endl;
 	}
 	else 
 		cout<<"please increase the limit of balance"<<endl;
 	int bl;
 	cin>>bl;
-	setBalanceLimit(int bl);
+	setBalanceLimit(bl);
 }
-~bankAccount()//destructor
+bankAccount::~bankAccount()//destructor
 {
 	cout<<"destructor has been invoked";
 	delete[]transactions;
@@ -100,8 +95,3 @@ void bankAccount::deposit(int d)//deposit amount  to the account
 	int currentTransaction=0;
 	int balancelimit=0;
 }
-
-
-
-
-
