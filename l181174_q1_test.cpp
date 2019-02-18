@@ -1,6 +1,5 @@
-#include"BankAccount.h"
-#include<iostream>
-#include "stdafx.h"
+#include "BankAccount.h"
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -12,10 +11,9 @@ int main()
 	cout<<"enter your balance"<<endl;
 	int b;
 	cin>>b;
-	bankAccount::setBalance(b);
-	int w;
-	bankAccount::withdraw(2000);
-	bankAccount::deposit(25000);
-	bankAccount::deposit(5000);
-	
+	myaccount.setBalance(b);
+	myaccount.withdraw(2000);
+	myaccount.deposit(25000);
+	myaccount.deposit(5000);
+	return 0;
 }
